@@ -2,7 +2,7 @@
 
 ## About ##
 
-Adds support for _hyphenating_ long words using the [Org_Heigl_Hyphenator](https://github.com/heiglandreas/Org_Heigl_Hyphenator) library. 
+Adds support for _hyphenating_ long words using the [Org_Heigl_Hyphenator](https://github.com/heiglandreas/Org_Heigl_Hyphenator) library.
 
 This bundle will add a Twig Extension for templates and a Hyphenator service.
 
@@ -14,8 +14,11 @@ This bundle will add a Twig Extension for templates and a Hyphenator service.
 
     2. Add the Hyphenator library in your `autoload.php` file
 
-        //Load Hyphenator
-        require_once __DIR__ . '/../vendor/OrgHeiglHyphenator/src/Org/Heigl/Hyphenator.php';
+        // app/autoload.php
+        $loader->registerPrefixes(array(
+            'Org_Heigl_' => __DIR__.'/../vendor/OrgHeiglHyphenator/src',
+            // your other namespaces
+        ));
 
 ## Installation ##
 
@@ -47,22 +50,20 @@ This bundle will add a Twig Extension for templates and a Hyphenator service.
 
 The supported options for the Hyphenator with the defaults are:
 
-    <parameters>
-        <parameter key="hyphenator.language">de</parameter>
-        <parameter key="hyphenator.hyphen">&amp;shy;</parameter>
-        <parameter key="hyphenator.left.min">5</parameter>
-        <parameter key="hyphenator.word.min">5</parameter>
-        <parameter key="hyphenator.special.chars">äöü</parameter>
-        <parameter key="hyphenator.quality">7</parameter>
-        <parameter key="hyphenator.no.hyphenate.marker">nbr:</parameter>
-        <parameter key="hyphenator.custom.hyphen">--</parameter>
-    </parameters>
+    liip_hyphenator:
+        language: en
+        hyphen: &shy;
+        left_min: 2
+        right_min: 2
+        word_min: 6
+        special_chars: ''
+        quality: highest # either the quality name, either the value of the constant
+        no_hyphenate_marker: ''
+        custom_hyphen: --
+
+All settings are optional.
 
 For details about their meaning consult the Hyphenator library documentation.
-
-Then on your `config.yml` file you need to add a line like:
-
-    liip_hyphenator: ~
 
 ## Usage ##
 
