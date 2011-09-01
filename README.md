@@ -2,7 +2,7 @@
 
 ## About ##
 
-Adds support for _hyphenating_ long words using the [Org_Heigl_Hyphenator](https://github.com/heiglandreas/Org_Heigl_Hyphenator) library. 
+Adds support for _hyphenating_ long words using the [Org_Heigl_Hyphenator](https://github.com/heiglandreas/Org_Heigl_Hyphenator) library.
 
 This bundle will add a Twig Extension for templates and a Hyphenator service.
 
@@ -68,9 +68,7 @@ Then on your `config.yml` file you need to add a line like:
 
 This library adds a filter for twig templates that can be used like:
 
-    {{ "Somelongwordtohyphenate"|hyphenate|raw }}
-
-Since it's using soft-hyphens you need to add the `raw` filter in order that the `&shy;` characters are sent to the templates.
+    {{ "Somelongwordtohyphenate"|hyphenate }}
 
 ## License ##
 
