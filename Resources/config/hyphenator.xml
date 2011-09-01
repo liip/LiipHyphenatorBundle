@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="hyphenator.language">de</parameter>
+        <parameter key="hyphenator.hyphen">&amp;shy;</parameter>
+        <parameter key="hyphenator.left.min">5</parameter>
+        <parameter key="hyphenator.word.min">5</parameter>
+        <parameter key="hyphenator.special.chars">äöü</parameter>
+        <parameter key="hyphenator.quality">7</parameter>
+        <parameter key="hyphenator.no.hyphenate.marker">nbr:</parameter>
+        <parameter key="hyphenator.custom.hyphen">--</parameter>
+    </parameters>
+    <services>
+        <service id="hyphenator.hyphenator" class="Org_Heigl_Hyphenator" factory-class="Org_Heigl_Hyphenator" factory-method="getInstance">
+            <argument>%hyphenator.language%</argument>
+            <call method="setHyphen">
+                <argument>%hyphenator.hyphen%</argument>
+            </call>
+            <call method="setLeftMin">
+                <argument>%hyphenator.left.min%</argument>
+            </call>
+            <call method="setWordMin">
+                <argument>%hyphenator.word.min%</argument>
+            </call>
+            <call method="setSpecialChars">
+                <argument>%hyphenator.special.chars%</argument>
+            </call>
+            <call method="setQuality">
+                <argument>%hyphenator.quality%</argument>
+            </call>
+            <call method="setNoHyphenateMarker">
+                <argument>%hyphenator.no.hyphenate.marker%</argument>
+            </call>
+            <call method="setNoHyphenateMarker">
+                <argument>%hyphenator.no.hyphenate.marker%</argument>
+            </call>
+            <call method="setCustomHyphen">
+                <argument>%hyphenator.custom.hyphen%</argument>
+            </call>
+        </service>
+        <service id="hyphenator.twig.extension" class="Liip\HyphenatorBundle\Extension\HyphenatorTwigExtension">
+            <call method="setHyphenator">
+                <argument type="service" id="hyphenator.hyphenator" />
+            </call>
+            <tag name="twig.extension" />
+        </service>
+    </services>
+</container>
