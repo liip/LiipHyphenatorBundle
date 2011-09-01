@@ -2,7 +2,7 @@
 
 ## About ##
 
-Adds support for _hyphenating_ long words using the `Org_Heigl_Hyphenator` library. 
+Adds support for _hyphenating_ long words using the [Org_Heigl_Hyphenator](https://github.com/heiglandreas/Org_Heigl_Hyphenator) library. 
 
 This bundle will add a Twig Extension for templates and a Hyphenator service.
 
