@@ -2,8 +2,8 @@
 
 namespace Liip\HyphenatorBundle\Extension;
 
-class HyphenatorTwigExtension extends \Twig_Extension {
-
+class HyphenatorTwigExtension extends \Twig_Extension
+{
     private $hyphenator;
 
     public function setHyphenator($hyphenator)
@@ -14,7 +14,7 @@ class HyphenatorTwigExtension extends \Twig_Extension {
     public function getFilters()
     {
         return array(
-            'hyphenate'  => new \Twig_Filter_Method($this, 'hyphenate'),
+            'hyphenate'  => new \Twig_Filter_Method($this, 'hyphenate', array('pre_escape' => 'html', 'is_safe' => array('html'))),
         );
     }
 
@@ -25,7 +25,6 @@ class HyphenatorTwigExtension extends \Twig_Extension {
 
     public function getName()
     {
-        return 'hyphenator_twig_extension';
+        return 'liip_hyphenator';
     }
-
 }
