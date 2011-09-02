@@ -30,7 +30,15 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('right_min')->defaultValue(2)->end()
                 ->scalarNode('word_min')->defaultValue(6)->end()
                 ->scalarNode('special_chars')->defaultValue('')->end()
-                ->scalarNode('quality')->defaultValue('highest')->end()
+                ->scalarNode('quality')
+                    ->defaultValue(\Org_Heigl_Hyphenator::QUALITY_HIGHEST)
+                    ->beforeNormalization()
+                        ->ifString()
+                        ->then(function($v) {
+                            return constant('Org_Heigl_Hyphenator::QUALITY_'.strtoupper($v));
+                        })
+                    ->end()
+                ->end()
                 ->scalarNode('no_hyphenate_marker')->defaultValue('')->end()
                 ->scalarNode('custom_hyphen')->defaultValue('--')->end()
             ->end();
