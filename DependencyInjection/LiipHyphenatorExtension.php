@@ -13,10 +13,12 @@ class LiipHyphenatorExtension extends Extension
     {
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('hyphenator.xml');
-    }
 
-    public function getAlias()
-    {
-        return 'liip_hyphenator';
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
+        foreach ($config as $key => $value) {
+            $container->setParameter(sprintf('liip_hyphenator.%s', $key), $value);
+        }
     }
 }
