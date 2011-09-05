@@ -39,7 +39,7 @@ class Configuration implements ConfigurationInterface
                         })
                     ->end()
                 ->end()
-                ->scalarNode('no_hyphenate_marker')->defaultValue('nbr:')->end()
+                ->scalarNode('no_hyphenate_marker')->defaultNull()->end()
                 ->scalarNode('custom_hyphen')->defaultValue('--')->end()
             ->end();
 
