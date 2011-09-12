@@ -71,6 +71,14 @@ This library adds a filter for twig templates that can be used like:
 
     {{ "Somelongwordtohyphenate"|hyphenate }}
 
+Alternatively the filter can be applied to an entire block:
+
+    {% filter hyphenate %}
+    ...
+    Somelongwordtohyphenate
+    ....
+    {% endfilter %}
+
 ## License ##
 
 See `LICENSE`.
