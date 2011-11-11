@@ -3,12 +3,12 @@
 
 set_time_limit(0);
 
-if (!is_dir($vendorDir = __DIR__.'/../vendor')) {
+if (!is_dir($vendorDir = __DIR__)) {
     mkdir($vendorDir, 0777, true);
 }
 
 $deps = array(
-    array('symfony', 'http://github.com/symfony/symfony', '2.0.5'),
+    array('symfony', 'http://github.com/symfony/symfony', 'v2.0.5'),
     array('OrgHeiglHyphenator', 'http://github.com/heiglandreas/Org_Heigl_Hyphenator', null),
 );
 
