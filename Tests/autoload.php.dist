@@ -1,18 +1,16 @@
 <?php
 
-$vendorDir = __DIR__.'/../../../..';
+$vendorDir = __DIR__.'/../vendor';
 require_once $vendorDir.'/symfony/src/Symfony/Component/ClassLoader/UniversalClassLoader.php';
 
 use Symfony\Component\ClassLoader\UniversalClassLoader;
 
 $loader = new UniversalClassLoader();
-$loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
     'Symfony'                => array($vendorDir.'/symfony/src'),
-    'Liip'                    => $vendorDir.'/bundles',
+    'Liip'                   => __DIR__.'/../../..',
 ));
 $loader->registerPrefixes(array(
-    'Org_Heigl_' => $vendorDir.'/hyphenator/src',
-    // your other namespaces
+    'Org_Heigl_' => $vendorDir.'/OrgHeiglHyphenator/src',
 ));
 $loader->register();
