@@ -6,6 +6,10 @@ Adds support for _hyphenating_ long words using the [Org_Heigl_Hyphenator](https
 
 This bundle will add a Twig Extension for templates and a Hyphenator service.
 
+
+[![Build Status](https://secure.travis-ci.org/liip/LiipHyphenatorBundle.png)](http://travis-ci.org/liip/LiipHyphenatorBundle)
+
+
 ## Prerequisites ##
 
     1. Install the Hyphenator library as a Git submodule:
