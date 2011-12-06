@@ -19,7 +19,7 @@ class LiipHyphenatorExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         foreach ($config as $key => $value) {
-            if ('tokenizers' !== $key) {
+            if ('tokenizers' !== $key && 'filters' !== $key) {
                 $container->setParameter(sprintf('liip_hyphenator.%s', $key), $value);
             }
         }
@@ -28,6 +28,10 @@ class LiipHyphenatorExtension extends Extension
 
         foreach ($config['tokenizers'] as $value) {
             $options->addMethodCall('addTokenizer', array(new Reference($value)));
+        }
+
+        foreach ($config['filters'] as $value) {
+            $options->addMethodCall('addFilter', array(new Reference($value)));
         }
     }
 }

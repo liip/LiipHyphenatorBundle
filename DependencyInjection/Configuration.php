@@ -25,6 +25,8 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('liip_hyphenator', 'array');
 
         $rootNode
+            ->fixXmlConfig('tokenizer', 'tokenizers')
+            ->fixXmlConfig('filter', 'filters')
             ->children()
                 ->scalarNode('language')->defaultValue('en')->end()
                 ->scalarNode('hyphen')->defaultValue('&shy;')->end()
@@ -45,6 +47,12 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('tokenizers')
                     ->addDefaultsIfNotSet()
                     ->defaultValue(array('liip_hyphenator.tokenizer.whitespace', 'liip_hyphenator.tokenizer.punctuation'))
+                    ->useAttributeAsKey('name')
+                    ->prototype('scalar')->end()
+                ->end()
+                ->arrayNode('filters')
+                    ->addDefaultsIfNotSet()
+                    ->defaultValue(array('liip_hyphenator.filter.simple'))
                     ->useAttributeAsKey('name')
                     ->prototype('scalar')->end()
                 ->end()
