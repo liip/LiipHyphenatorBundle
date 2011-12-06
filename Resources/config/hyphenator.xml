@@ -5,7 +5,8 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="liip_hyphenator.hyphenator" class="Org_Heigl_Hyphenator" factory-class="Org_Heigl_Hyphenator" factory-method="getInstance">
+
+        <service id="liip_hyphenator.hyphenator.options" class="Org\Heigl\Hyphenator\Options">
             <argument>%liip_hyphenator.language%</argument>
             <call method="setHyphen">
                 <argument>%liip_hyphenator.hyphen%</argument>
@@ -19,24 +20,30 @@
             <call method="setWordMin">
                 <argument>%liip_hyphenator.word_min%</argument>
             </call>
-            <call method="setSpecialChars">
-                <argument>%liip_hyphenator.special_chars%</argument>
-            </call>
             <call method="setQuality">
                 <argument>%liip_hyphenator.quality%</argument>
             </call>
-            <call method="setNoHyphenateMarker">
-                <argument>%liip_hyphenator.no_hyphenate_marker%</argument>
+            <call method="setNoHyphenateString">
+                <argument>%liip_hyphenator.no_hyphenate_string%</argument>
             </call>
             <call method="setCustomHyphen">
                 <argument>%liip_hyphenator.custom_hyphen%</argument>
             </call>
         </service>
+
+        <service id="liip_hyphenator.hyphenator" class="Org\Heigl\Hyphenator\Hyphenator" factory-class="Org\Heigl\Hyphenator\Hyphenator" factory-method="factory">
+            <argument>%liip_hyphenator.language%</argument>
+            <call method="setOptions">
+                <argument type="service" id="liip_hyphenator.hyphenator.options" />
+            </call>
+        </service>
+
         <service id="liip_hyphenator.twig.extension" class="Liip\HyphenatorBundle\Extension\HyphenatorTwigExtension">
             <call method="setHyphenator">
                 <argument type="service" id="liip_hyphenator.hyphenator" />
             </call>
             <tag name="twig.extension" />
         </service>
+
     </services>
 </container>

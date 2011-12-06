@@ -2,11 +2,16 @@
 
 namespace Liip\HyphenatorBundle\Extension;
 
+use Org\Heigl\Hyphenator\Hyphenator;
+
 class HyphenatorTwigExtension extends \Twig_Extension
 {
+    /**
+     * @var Hyphenator
+     */
     private $hyphenator;
 
-    public function setHyphenator($hyphenator)
+    public function setHyphenator(Hyphenator $hyphenator)
     {
         $this->hyphenator = $hyphenator;
     }

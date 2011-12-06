@@ -5,6 +5,8 @@ namespace Liip\HyphenatorBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
+use Org\Heigl\Hyphenator\Hyphenator;
+
 /**
  * This class contains the configuration information for the bundle
  *
@@ -31,15 +33,15 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('word_min')->defaultValue(6)->end()
                 ->scalarNode('special_chars')->defaultValue('')->end()
                 ->scalarNode('quality')
-                    ->defaultValue(\Org_Heigl_Hyphenator::QUALITY_HIGHEST)
+                    ->defaultValue(Hyphenator::QUALITY_HIGHEST)
                     ->beforeNormalization()
                         ->ifString()
                         ->then(function($v) {
-                            return constant('Org_Heigl_Hyphenator::QUALITY_'.strtoupper($v));
+                            return constant('Org\Heigl\Hyphenator\Hyphenator::QUALITY_'.strtoupper($v));
                         })
                     ->end()
                 ->end()
-                ->scalarNode('no_hyphenate_marker')->defaultNull()->end()
+                ->scalarNode('no_hyphenate_string')->defaultNull()->end()
                 ->scalarNode('custom_hyphen')->defaultValue('--')->end()
             ->end();
 
