@@ -31,7 +31,6 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('left_min')->defaultValue(2)->end()
                 ->scalarNode('right_min')->defaultValue(2)->end()
                 ->scalarNode('word_min')->defaultValue(6)->end()
-                ->scalarNode('special_chars')->defaultValue('')->end()
                 ->scalarNode('quality')
                     ->defaultValue(Hyphenator::QUALITY_HIGHEST)
                     ->beforeNormalization()

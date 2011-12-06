@@ -60,9 +60,8 @@ The supported options for the Hyphenator with the defaults are:
         left_min: 2
         right_min: 2
         word_min: 6
-        special_chars: ''
         quality: highest # either the quality name, either the value of the constant
-        no_hyphenate_marker: ''
+        no_hyphenate_string: ''
         custom_hyphen: --
 
 All settings are optional.

@@ -7,7 +7,9 @@
     <services>
 
         <service id="liip_hyphenator.hyphenator.options" class="Org\Heigl\Hyphenator\Options">
-            <argument>%liip_hyphenator.language%</argument>
+            <call method="setDefaultLocale">
+                <argument>%liip_hyphenator.language%</argument>
+            </call>
             <call method="setHyphen">
                 <argument>%liip_hyphenator.hyphen%</argument>
             </call>
