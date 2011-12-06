@@ -6,9 +6,7 @@ Adds support for _hyphenating_ long words using the [Org_Heigl_Hyphenator](https
 
 This bundle will add a Twig Extension for templates and a Hyphenator service.
 
-
 [![Build Status](https://secure.travis-ci.org/liip/LiipHyphenatorBundle.png)](http://travis-ci.org/liip/LiipHyphenatorBundle)
-
 
 ## Prerequisites ##
 
@@ -63,6 +61,7 @@ The supported options for the Hyphenator with the defaults are:
         quality: highest # either the quality name, either the value of the constant
         no_hyphenate_string: ''
         custom_hyphen: --
+        tokenizers: ['liip_hyphenator.tokenizer.whitespace', 'liip_hyphenator.tokenizer.puncuation']
 
 All settings are optional.
 

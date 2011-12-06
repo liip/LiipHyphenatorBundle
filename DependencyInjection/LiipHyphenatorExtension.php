@@ -6,6 +6,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Reference;
 
 class LiipHyphenatorExtension extends Extension
 {
@@ -18,7 +19,15 @@ class LiipHyphenatorExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         foreach ($config as $key => $value) {
-            $container->setParameter(sprintf('liip_hyphenator.%s', $key), $value);
+            if ('tokenizers' !== $key) {
+                $container->setParameter(sprintf('liip_hyphenator.%s', $key), $value);
+            }
+        }
+
+        $options = $container->getDefinition($this->getAlias().'.hyphenator');
+
+        foreach ($config['tokenizers'] as $value) {
+            $options->addMethodCall('addTokenizer', array(new Reference($value)));
         }
     }
 }

@@ -22,7 +22,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('liip_hyphenator');
+        $rootNode = $treeBuilder->root('liip_hyphenator', 'array');
 
         $rootNode
             ->children()
@@ -42,6 +42,12 @@ class Configuration implements ConfigurationInterface
                 ->end()
                 ->scalarNode('no_hyphenate_string')->defaultNull()->end()
                 ->scalarNode('custom_hyphen')->defaultValue('--')->end()
+                ->arrayNode('tokenizers')
+                    ->addDefaultsIfNotSet()
+                    ->defaultValue(array('liip_hyphenator.tokenizer.whitespace', 'liip_hyphenator.tokenizer.punctuation'))
+                    ->useAttributeAsKey('name')
+                    ->prototype('scalar')->end()
+                ->end()
             ->end();
 
         return $treeBuilder;

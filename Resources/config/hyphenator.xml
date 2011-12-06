@@ -6,7 +6,7 @@
 
     <services>
 
-        <service id="liip_hyphenator.hyphenator.options" class="Org\Heigl\Hyphenator\Options">
+        <service id="liip_hyphenator.options" class="Org\Heigl\Hyphenator\Options">
             <call method="setDefaultLocale">
                 <argument>%liip_hyphenator.language%</argument>
             </call>
@@ -31,14 +31,22 @@
             <call method="setCustomHyphen">
                 <argument>%liip_hyphenator.custom_hyphen%</argument>
             </call>
-        </service>
-
-        <service id="liip_hyphenator.hyphenator" class="Org\Heigl\Hyphenator\Hyphenator" factory-class="Org\Heigl\Hyphenator\Hyphenator" factory-method="factory">
-            <argument>%liip_hyphenator.language%</argument>
-            <call method="setOptions">
-                <argument type="service" id="liip_hyphenator.hyphenator.options" />
+            <call method="addFilter">
+                <argument>Simple</argument>
             </call>
         </service>
+
+        <service id="liip_hyphenator.hyphenator" class="Org\Heigl\Hyphenator\Hyphenator">
+            <call method="setOptions">
+                <argument type="service" id="liip_hyphenator.options" />
+            </call>
+            <call method="addDictionary">
+                <argument>%liip_hyphenator.language%</argument>
+            </call>
+        </service>
+
+        <service id="liip_hyphenator.tokenizer.whitespace" class="Org\Heigl\Hyphenator\Tokenizer\WhiteSpaceTokenizer" />
+        <service id="liip_hyphenator.tokenizer.punctuation" class="Org\Heigl\Hyphenator\Tokenizer\PunktuationTokenizer" />
 
         <service id="liip_hyphenator.twig.extension" class="Liip\HyphenatorBundle\Extension\HyphenatorTwigExtension">
             <call method="setHyphenator">
