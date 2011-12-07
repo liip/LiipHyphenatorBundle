@@ -7,10 +7,8 @@ use Symfony\Component\ClassLoader\UniversalClassLoader;
 
 $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
-    'Symfony'                => array($vendorDir.'/symfony/src'),
-));
-$loader->registerPrefixes(array(
-    'Org_Heigl_' => $vendorDir.'/OrgHeiglHyphenator/src',
+    'Symfony' => $vendorDir.'/symfony/src',
+    'Org\Heigl\Hyphenator' => $vendorDir.'/OrgHeiglHyphenator/src',
 ));
 $loader->register();
 
