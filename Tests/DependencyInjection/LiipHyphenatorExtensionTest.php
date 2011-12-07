@@ -3,6 +3,9 @@
 namespace Liip\HyphenatorBundle\Tests\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+
+use Org\Heigl\Hyphenator\Hyphenator;
+
 use Liip\HyphenatorBundle\DependencyInjection\LiipHyphenatorExtension;
 
 class LiipHyphenatorExtensionTest extends \PHPUnit_Framework_TestCase
@@ -13,21 +16,21 @@ class LiipHyphenatorExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $this->createConfiguration();
 
-        $this->assertParameter(\Org_Heigl_Hyphenator::QUALITY_HIGHEST, 'liip_hyphenator.quality');
+        $this->assertParameter(Hyphenator::QUALITY_HIGHEST, 'liip_hyphenator.quality');
     }
 
     public function testQualityAsString()
     {
         $this->createConfiguration(array('quality' => 'normal'));
 
-        $this->assertParameter(\Org_Heigl_Hyphenator::QUALITY_NORMAL, 'liip_hyphenator.quality');
+        $this->assertParameter(Hyphenator::QUALITY_NORMAL, 'liip_hyphenator.quality');
     }
 
     public function testQualityAsInteger()
     {
-        $this->createConfiguration(array('quality' => \Org_Heigl_Hyphenator::QUALITY_LOW));
+        $this->createConfiguration(array('quality' => Hyphenator::QUALITY_LOW));
 
-        $this->assertParameter(\Org_Heigl_Hyphenator::QUALITY_LOW, 'liip_hyphenator.quality');
+        $this->assertParameter(Hyphenator::QUALITY_LOW, 'liip_hyphenator.quality');
     }
 
     /**
