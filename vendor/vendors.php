@@ -11,6 +11,7 @@ $vendorDir = __DIR__;
 $deps = array(
     array('symfony', 'http://github.com/symfony/symfony', isset($_SERVER['SYMFONY_VERSION']) ? $_SERVER['SYMFONY_VERSION'] : 'origin/master'),
     array('OrgHeiglHyphenator', 'http://github.com/heiglandreas/Org_Heigl_Hyphenator', 'origin/master'),
+    array('twig', 'http://github.com/fabpot/Twig', 'origin/master'),
 );
 
 foreach ($deps as $dep) {

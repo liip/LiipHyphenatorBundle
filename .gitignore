@@ -3,3 +3,4 @@ Tests/autoload.php
 
 vendor/symfony
 vendor/OrgHeiglHyphenator
+vendor/twig/
