@@ -45,7 +45,7 @@
             </call>
         </service>
 
-        <service id="liip_hyphenator.tokenizer.whitespace" class="Org\Heigl\Hyphenator\Tokenizer\WhiteSpaceTokenizer" />
+        <service id="liip_hyphenator.tokenizer.whitespace" class="Org\Heigl\Hyphenator\Tokenizer\WhitespaceTokenizer" />
         <service id="liip_hyphenator.tokenizer.punctuation" class="Org\Heigl\Hyphenator\Tokenizer\PunctuationTokenizer" />
 
         <service id="liip_hyphenator.filter.simple" class="Org\Heigl\Hyphenator\Filter\SimpleFilter" />
