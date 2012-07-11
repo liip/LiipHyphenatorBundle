@@ -1,6 +1,5 @@
 phpunit.xml
-Tests/autoload.php
+vendor
 
-vendor/symfony
-vendor/OrgHeiglHyphenator
-vendor/twig/
+composer.lock
+composer.phar
