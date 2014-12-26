@@ -1,6 +1,5 @@
-# LiipHyphenatorBundle #
-
-## About ##
+Introduction
+============
 
 Adds support for _hyphenating_ long words using the [Org_Heigl_Hyphenator](https://github.com/heiglandreas/Org_Heigl_Hyphenator) library.
 
@@ -8,50 +7,53 @@ This bundle will add a Twig Extension for templates and a Hyphenator service.
 
 [![Build Status](https://secure.travis-ci.org/liip/LiipHyphenatorBundle.png)](http://travis-ci.org/liip/LiipHyphenatorBundle)
 
-## Prerequisites ##
+Installation
+------------
 
-    1. Install the Hyphenator library as a Git submodule:
+ 1. Download the Bundle
+ 
+    Open a command console, enter your project directory and execute the
+    following command to download the latest stable version of this bundle:
 
-        $ git submodule add git://github.com/heiglandreas/Org_Heigl_Hyphenator.git vendor/OrgHeiglHyphenator
+    ```bash
+    $ composer require liip/hyphenator-bundle
+    ```
 
-    2. Add the Hyphenator library in your `autoload.php` file
+    This command requires you to have Composer installed globally, as explained
+    in the [installation chapter](https://getcomposer.org/doc/00-intro.md)
+    of the Composer documentation.
 
-        // app/autoload.php
-        $loader->registerPrefixes(array(
-            'Org_Heigl_' => __DIR__.'/../vendor/OrgHeiglHyphenator/src',
-            // your other namespaces
-        ));
+ 2. Enable the Bundle
 
-## Installation ##
-
-    1. Add this bundle to your project as a Git submodule:
-
-        $ git submodule add git://github.com/liip/LiipHyphenatorBundle.git vendor/bundles/Liip/LiipHyphenatorBundle
-
-    2. Add the Liip namespace to your autoloader:
-
-        // app/autoload.php
-        $loader->registerNamespaces(array(
-            'Liip' => __DIR__.'/../vendor/bundles',
-            // your other namespaces
-        ));
-
-    3. Add this bundle to your application's kernel:
-
-        // application/ApplicationKernel.php
+    Add the following line in the `app/AppKernel.php` file to enable this bundle only
+    for the `test` environment:
+   
+    ```php
+    <?php
+    // app/AppKernel.php
+   
+    // ...
+    class AppKernel extends Kernel
+    {
         public function registerBundles()
         {
-          return array(
-              // ...
-              new Liip\HyphenatorBundle\LiipHyphenatorBundle(),
-              // ...
-          );
+            ..
+            
+            new Liip\HyphenatorBundle\LiipHyphenatorBundle(),
+    
+            return $bundles
         }
+    
+        // ...
+    }
+    ```
 
-## Configuration ##
+ 3. Configure the bundle:
 
-The supported options for the Hyphenator with the defaults are:
+    The supported options for the Hyphenator with the defaults are:
 
+    ```yaml
+    # app/config/config.yml
     liip_hyphenator:
         language: en
         hyphen: &shy;
@@ -63,12 +65,14 @@ The supported options for the Hyphenator with the defaults are:
         custom_hyphen: --
         tokenizers: ['liip_hyphenator.tokenizer.whitespace', 'liip_hyphenator.tokenizer.puncuation']
         filters: ['liip_hyphenator.filter.simple']
+    ```
 
-All settings are optional.
+    All settings are optional.
+    
+    For details about their meaning consult the Hyphenator library documentation.
 
-For details about their meaning consult the Hyphenator library documentation.
-
-## Usage ##
+Usage
+-----
 
 This library adds a filter for twig templates that can be used like:
 
@@ -81,7 +85,3 @@ Alternatively the filter can be applied to an entire block:
     Somelongwordtohyphenate
     ....
     {% endfilter %}
-
-## License ##
-
-See `LICENSE`.
