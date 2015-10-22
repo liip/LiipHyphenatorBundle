@@ -3,9 +3,7 @@
 namespace Liip\HyphenatorBundle\Tests\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-
 use Org\Heigl\Hyphenator\Hyphenator;
-
 use Liip\HyphenatorBundle\DependencyInjection\LiipHyphenatorExtension;
 
 class LiipHyphenatorExtensionTest extends \PHPUnit_Framework_TestCase
