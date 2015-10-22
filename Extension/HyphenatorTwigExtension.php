@@ -19,7 +19,7 @@ class HyphenatorTwigExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            'hyphenate'  => new \Twig_Filter_Method($this, 'hyphenate', array('pre_escape' => 'html', 'is_safe' => array('html'))),
+            'hyphenate' => new \Twig_Filter_Method($this, 'hyphenate', array('pre_escape' => 'html', 'is_safe' => array('html'))),
         );
     }
 
