@@ -4,11 +4,10 @@ namespace Liip\HyphenatorBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-
 use Org\Heigl\Hyphenator\Hyphenator;
 
 /**
- * This class contains the configuration information for the bundle
+ * This class contains the configuration information for the bundle.
  *
  * @author Christophe Coevoet <stof@notk.org>
  */
@@ -37,7 +36,7 @@ class Configuration implements ConfigurationInterface
                     ->defaultValue(Hyphenator::QUALITY_HIGHEST)
                     ->beforeNormalization()
                         ->ifString()
-                        ->then(function($v) {
+                        ->then(function ($v) {
                             return constant('Org\Heigl\Hyphenator\Hyphenator::QUALITY_'.strtoupper($v));
                         })
                     ->end()
