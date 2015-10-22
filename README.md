@@ -63,7 +63,7 @@ Installation
         quality: highest # either the quality name, either the value of the constant
         no_hyphenate_string: ''
         custom_hyphen: --
-        tokenizers: ['liip_hyphenator.tokenizer.whitespace', 'liip_hyphenator.tokenizer.puncuation']
+        tokenizers: ['liip_hyphenator.tokenizer.whitespace', 'liip_hyphenator.tokenizer.punctuation']
         filters: ['liip_hyphenator.filter.simple']
     ```
 
