@@ -12,7 +12,6 @@
 namespace Liip\HyphenatorBundle\Extension;
 
 use Liip\HyphenatorBundle\HyphenatorFactory;
-use Org\Heigl\Hyphenator\Hyphenator;
 
 class HyphenatorTwigExtension extends \Twig_Extension
 {
