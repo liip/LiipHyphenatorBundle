@@ -1,0 +1,12 @@
+imports:
+    - { resource: ../config/default.yml }
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+
+# Hyphenator Configuration
+liip_hyphenator:
+    default_locale: de_DE
+    hyphen: '&shy;'
