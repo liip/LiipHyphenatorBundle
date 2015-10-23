@@ -1,0 +1,21 @@
+<html>
+    <body>
+    <h1>Hyphenator</h1>
+
+    Imagine you have text like this:
+    <div style="width: 100px; border-style:solid; border-width:medium;">
+        {{ "We have some really long words in german like sauerstofffeldflasche." }}
+    </div>
+    <br />
+    Simply use the "|hyphenate" filter to automatically add soft-dashes:
+    <div style="width: 100px; border-style:solid; border-width:medium;">
+        {{ "We have some really long words in german like sauerstofffeldflasche."|hyphenate }}
+    </div>
+    <br />
+    Here is the actual HTML code that was generated:
+    <div>
+        {{ "We have some really long words in german like sauerstofffeldflasche."|hyphenate|escape }}
+    </div>
+
+    </body>
+</html>

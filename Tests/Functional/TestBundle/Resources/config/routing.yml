@@ -1,0 +1,7 @@
+filter_with_default_language:
+    path:     /filter-with-default-language
+    defaults: { _controller: TestBundle:Test:filterWithDefaultLanguage }
+
+filter_with_custom_language:
+    path:     /filter-with-custom-language
+    defaults: { _controller: TestBundle:Test:filterWithCustomLanguage }

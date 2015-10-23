@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the LiipHyphenatorBundle
+ *
+ * (c) Liip AG
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Liip\HyphenatorBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -44,12 +53,12 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('no_hyphenate_string')->defaultNull()->end()
                 ->scalarNode('custom_hyphen')->defaultValue('--')->end()
                 ->arrayNode('tokenizers')
-                    ->defaultValue(array('liip_hyphenator.tokenizer.whitespace', 'liip_hyphenator.tokenizer.punctuation'))
+                    ->defaultValue(array('Whitespace', 'Punctuation'))
                     ->useAttributeAsKey('name')
                     ->prototype('scalar')->end()
                 ->end()
                 ->arrayNode('filters')
-                    ->defaultValue(array('liip_hyphenator.filter.simple'))
+                    ->defaultValue(array('Simple'))
                     ->useAttributeAsKey('name')
                     ->prototype('scalar')->end()
                 ->end()

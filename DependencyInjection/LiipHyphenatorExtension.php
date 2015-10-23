@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the LiipHyphenatorBundle
+ *
+ * (c) Liip AG
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Liip\HyphenatorBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -24,14 +33,14 @@ class LiipHyphenatorExtension extends Extension
             }
         }
 
-        $options = $container->getDefinition($this->getAlias().'.hyphenator');
+        $options = $container->getDefinition($this->getAlias().'.options');
 
         foreach ($config['tokenizers'] as $value) {
-            $options->addMethodCall('addTokenizer', array(new Reference($value)));
+            $options->addMethodCall('addTokenizer', array($value));
         }
 
         foreach ($config['filters'] as $value) {
-            $options->addMethodCall('addFilter', array(new Reference($value)));
+            $options->addMethodCall('addFilter', array($value));
         }
     }
 }

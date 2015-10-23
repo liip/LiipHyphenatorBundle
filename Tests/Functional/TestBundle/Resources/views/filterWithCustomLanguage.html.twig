@@ -1,0 +1,21 @@
+<html>
+    <body>
+    <h1>Hyphenator</h1>
+
+    Imagine you have text like this:
+    <div style="width: 100px; border-style:solid; border-width:medium;">
+        {{ "Ceci est à remplacer par une fâble." }}
+    </div>
+    <br />
+    Simply use the "|hyphenate" filter to automatically add soft-dashes:
+    <div style="width: 100px; border-style:solid; border-width:medium;">
+        {{ "Ceci est à remplacer par une fâble."|hyphenate("fr") }}
+    </div>
+    <br />
+    Here is the actual HTML code that was generated:
+    <div>
+        {{ "Ceci est à remplacer par une fâble."|hyphenate("fr")|escape }}
+    </div>
+
+    </body>
+</html>

@@ -85,3 +85,7 @@ Alternatively the filter can be applied to an entire block:
     Somelongwordtohyphenate
     ....
     {% endfilter %}
+
+Furthermore its possible to pass in a locale as a parameter if the default locale should not be used:
+
+    {{ "Somelongwordtohyphenate"|hyphenate("de") }}
