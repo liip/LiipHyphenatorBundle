@@ -1,31 +1,40 @@
 <?php
 
+/*
+ * This file is part of the LiipHyphenatorBundle
+ *
+ * (c) Liip AG
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Liip\HyphenatorBundle\Extension;
 
-use Org\Heigl\Hyphenator\Hyphenator;
+use Liip\HyphenatorBundle\HyphenatorFactory;
 
 class HyphenatorTwigExtension extends \Twig_Extension
 {
     /**
-     * @var Hyphenator
+     * @var HyphenatorFactory
      */
-    private $hyphenator;
+    private $factory;
 
-    public function setHyphenator(Hyphenator $hyphenator)
+    public function setHyphenatorFactory(HyphenatorFactory $factory)
     {
-        $this->hyphenator = $hyphenator;
+        $this->factory = $factory;
     }
 
     public function getFilters()
     {
         return array(
-            'hyphenate' => new \Twig_Filter_Method($this, 'hyphenate', array('pre_escape' => 'html', 'is_safe' => array('html'))),
+            'hyphenate' => new \Twig_SimpleFilter('hyphenate', array($this, 'hyphenate'), array('pre_escape' => 'html', 'is_safe' => array('html'))),
         );
     }
 
-    public function hyphenate($word)
+    public function hyphenate($word, $locale = null)
     {
-        return $this->hyphenator->hyphenate($word);
+        return $this->factory->getInstance($locale)->hyphenate($word);
     }
 
     public function getName()

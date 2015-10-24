@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the LiipHyphenatorBundle
+ *
+ * (c) Liip AG
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Liip\HyphenatorBundle\Tests\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -8,27 +17,30 @@ use Liip\HyphenatorBundle\DependencyInjection\LiipHyphenatorExtension;
 
 class LiipHyphenatorExtensionTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var ContainerBuilder
+     */
     private $configuration;
 
     public function testQualityAsDefault()
     {
         $this->createConfiguration();
 
-        $this->assertParameter(Hyphenator::QUALITY_HIGHEST, 'liip_hyphenator.quality');
+        $this->assertObjectPropertyEquals('liip_hyphenator.options', Hyphenator::QUALITY_HIGHEST, '_quality');
     }
 
     public function testQualityAsString()
     {
         $this->createConfiguration(array('quality' => 'normal'));
 
-        $this->assertParameter(Hyphenator::QUALITY_NORMAL, 'liip_hyphenator.quality');
+        $this->assertObjectPropertyEquals('liip_hyphenator.options', Hyphenator::QUALITY_NORMAL, '_quality');
     }
 
     public function testQualityAsInteger()
     {
         $this->createConfiguration(array('quality' => Hyphenator::QUALITY_LOW));
 
-        $this->assertParameter(Hyphenator::QUALITY_LOW, 'liip_hyphenator.quality');
+        $this->assertObjectPropertyEquals('liip_hyphenator.options', Hyphenator::QUALITY_LOW, '_quality');
     }
 
     /**
@@ -42,24 +54,15 @@ class LiipHyphenatorExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->configuration instanceof ContainerBuilder);
     }
 
-    private function assertAlias($value, $key)
+    private function assertObjectPropertyEquals($id, $expected, $property)
     {
-        $this->assertEquals($value, (string) $this->configuration->getAlias($key), sprintf('%s alias is correct', $key));
-    }
+        $this->assertTrue($this->configuration->hasDefinition($id));
 
-    private function assertParameter($value, $key)
-    {
-        $this->assertEquals($value, $this->configuration->getParameter($key), sprintf('%s parameter is correct', $key));
-    }
-
-    private function assertHasDefinition($id)
-    {
-        $this->assertTrue(($this->configuration->hasDefinition($id) ?: $this->configuration->hasAlias($id)));
-    }
-
-    private function assertNotHasDefinition($id)
-    {
-        $this->assertFalse(($this->configuration->hasDefinition($id) ?: $this->configuration->hasAlias($id)));
+        $options = $this->configuration->get($id);
+        $optionsRef = new \ReflectionClass($options);
+        $propertyRef = $optionsRef->getProperty($property);
+        $propertyRef->setAccessible(true);
+        $this->assertEquals($expected, $propertyRef->getValue($options));
     }
 
     protected function tearDown()

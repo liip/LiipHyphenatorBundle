@@ -9,10 +9,10 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Liip\HyphenatorBundle;
+namespace Liip\HyphenatorBundle\Tests\Functional\TestBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class LiipHyphenatorBundle extends Bundle
+class TestBundle extends Bundle
 {
 }
