@@ -14,13 +14,14 @@
     ],
 
     "require": {
-        "php":                      ">=5.3.9",
-        "Org_Heigl/Hyphenator":     "~2.0",
-        "twig/twig":                "~1.20|~2.0",
+        "php": "^5.3.9|^7.0",
+        "Org_Heigl/Hyphenator": "~2.0",
+        "twig/twig": "~1.20|~2.0",
         "symfony/framework-bundle": "~2.3|~3.0"
     },
 
     "require-dev": {
+        "symfony/dependency-injection": "~2.3|~3.0",
         "symfony/twig-bundle": "~2.3|~3.0",
         "symfony/browser-kit": "~2.3|~3.0"
     },
