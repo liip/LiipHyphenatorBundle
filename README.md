@@ -55,7 +55,7 @@ Installation
     ```yaml
     # app/config/config.yml
     liip_hyphenator:
-        language: en
+        default_locale: en
         hyphen: &shy;
         left_min: 2
         right_min: 2
