@@ -55,7 +55,7 @@ Installation
     ```yaml
     # app/config/config.yml
     liip_hyphenator:
-        default_locale: en
+        default_locale: 'en_GB'
         hyphen: &shy;
         left_min: 2
         right_min: 2
@@ -67,7 +67,7 @@ Installation
         filters: ['liip_hyphenator.filter.simple']
     ```
 
-    All settings are optional.
+    All settings are optional. _Caution_: `default_locale`needs to be a fully qualified locale like `en_EN`, `en` will not work. 
     
     For details about their meaning consult the Hyphenator library documentation.
 
