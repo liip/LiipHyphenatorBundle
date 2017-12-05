@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Org\Heigl\Hyphenator\Hyphenator;
 use Liip\HyphenatorBundle\DependencyInjection\LiipHyphenatorExtension;
 
-class LiipHyphenatorExtensionTest extends \PHPUnit_Framework_TestCase
+class LiipHyphenatorExtensionTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var ContainerBuilder
